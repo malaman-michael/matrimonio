@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Invitazione Matrimonio - Eduardo & Zuley</title>
+    <style>
+        /* Importazione font Google */
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@400;700&display=swap');
+        
+        /* Reset base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow-x: hidden;
+            background: #fceef5;
+        }
+        
+        /* --- CSS COMPLETO DEL COMPONENTE --- */
+        .sobreboda-componente-autocontenido {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            font-family: var(--font-base, 'Lato', sans-serif);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fceef5;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-Sobre-container {
+            --color-sobre-principal: #ffc0db;
+            --color-sobre-lado: #f7b6d1;
+            --color-sobre-fondo: #f0adca;
+            --color-solapa: #e098b9;
+            --color-tarjeta-fondo: #fffdfd;
+            --color-texto-principal: #804d69;
+            --color-texto-secundario: #a88194;
+            --color-corazon: #ff8cb4;
+            --font-base: 'Lato', sans-serif;
+            --font-nombres: 'Great Vibes', cursive;
+            --W: 250px;
+            --R: 1.625;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+            font-family: var(--font-base);
+            box-sizing: border-box;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-texto-invitacion {
+            font-family: var(--font-base);
+            color: var(--color-texto-secundario);
+            font-size: 14px;
+            margin: 0 0 15px 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-nombres-pareja {
+            font-family: var(--font-nombres);
+            color: var(--color-texto-principal);
+            font-size: 44px;
+            line-height: 1;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sobreboda-componente-autocontenido .sobreboda {
+            position: relative;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-petalos-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-petalo {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #ff8cb4 0%, #ffc0db 50%, #ff8cb4 100%);
+            border-radius: 0px 100% 0px 100%;
+            top: -30px;
+            box-shadow: 0 2px 4px rgba(255, 140, 180, 0.2);
+            transform-style: preserve-3d;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-petalo.tipo-1 {
+            width: 18px;
+            height: 22px;
+            background: linear-gradient(45deg, #e098b9 0%, #ffc0db 60%, #fff 100%);
+            border-radius: 50% 0px 50% 0px;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-petalo.tipo-2 {
+            width: 25px;
+            height: 18px;
+            background: radial-gradient(ellipse at center, #fff 0%, #ffc0db 40%, #ff8cb4 100%);
+            border-radius: 100% 0px 100% 0px;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-petalo.tipo-3 {
+            width: 16px;
+            height: 24px;
+            background: linear-gradient(180deg, #ffc0db 0%, #ff8cb4 50%, #e098b9 100%);
+            border-radius: 50% 50% 0px 50%;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-petalo.tipo-4 {
+            width: 22px;
+            height: 20px;
+            background: conic-gradient(from 45deg, #fff, #ffc0db, #ff8cb4, #ffc0db, #fff);
+            border-radius: 0px 100% 0px 100%;
+            filter: blur(0.5px);
+        }
+        
+        .sobreboda-componente-autocontenido #invitacion-sobre-widget {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-Sobre-container * {
+            box-sizing: border-box;
+            outline: none;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-scene {
+            position: relative;
+            width: var(--W);
+            height: calc(var(--W) / var(--R));
+            perspective: 1500px;
+            max-width: 95vw;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-invitation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-envelope-piece {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border-radius: 8px;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-envelope-back {
+            background: var(--color-sobre-principal);
+            z-index: 1;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sobreboda-componente-autocontenido .SI-envelope-front-pocket {
+            border-left: calc(var(--W) / 2) solid var(--color-sobre-lado);
+            border-right: calc(var(--W) / 2) solid var(--color-sobre-lado);
+            border-bottom: calc(var(--W) / var(--R) / 2) solid var(--color-sobre-fondo);
+            border-top: calc(var(--W) / var(--R) / 2) solid transparent;
+            z-index: 5;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-flap {
+            transform-origin: 50% 0%;
+            border-right: calc(var(--W) / 2) solid transparent;
+            border-top: calc(var(--W) / var(--R) / 2) solid var(--color-solapa);
+            border-left: calc(var(--W) / 2) solid transparent;
+            z-index: 6;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-card {
+            width: 88%;
+            height: 90%;
+            position: absolute;
+            top: 5%;
+            left: 6%;
+            z-index: 3;
+            transform-style: preserve-3d;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-card.is-interactive {
+            cursor: pointer;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-face {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--color-tarjeta-fondo);
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sobreboda-componente-autocontenido .SI-face.SI-back {
+            transform: rotateY(180deg);
+        }
+        
+        .sobreboda-componente-autocontenido .SI-invitation-button {
+            font: 700 16px/1 var(--font-base);
+            padding: 15px 30px;
+            border-radius: 30px;
+            background: white;
+            color: var(--color-texto-principal);
+            border: none;
+            position: absolute;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            left: 50%;
+            top: 110%;
+            transform: translateX(-50%);
+            z-index: 7;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-hearts-container-initial,
+        .sobreboda-componente-autocontenido .SI-hearts-container-continuous {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 250%;
+            top: -150%;
+            pointer-events: none;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-hearts-container-initial {
+            z-index: 4;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-hearts-container-continuous {
+            z-index: 2;
+        }
+        
+        .sobreboda-componente-autocontenido .SI-heart {
+            position: absolute;
+            font-family: sans-serif;
+            color: var(--color-corazon);
+            opacity: 0;
+        }
+        
+        /* Music Player */
+        .rmw-reproductor-musica {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 2147483000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 999px;
+            padding: 4px 8px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transform: translateY(-8px);
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+        
+        .rmw-reproductor-musica.rmw-visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        
+        .rmw-reproductor-musica .rmw-btn {
+            width: 34px;
+            height: 34px;
+            border: 1px solid #fce4ec;
+            border-radius: 999px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #fff1f2, #ffe4e6);
+            transition: transform 0.15s ease;
+            position: relative;
+            flex-shrink: 0;
+            padding: 0;
+        }
+        
+        .rmw-reproductor-musica .rmw-btn:active {
+            transform: scale(0.96);
+        }
+        
+        .rmw-reproductor-musica .rmw-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: #d81b60;
+            transition: opacity 0.2s ease;
+        }
+        
+        .rmw-reproductor-musica .rmw-icon-play {
+            display: block;
+        }
+        
+        .rmw-reproductor-musica .rmw-icon-pause {
+            display: none;
+        }
+        
+        .rmw-reproductor-musica.rmw-playing .rmw-icon-play {
+            display: none;
+        }
+        
+        .rmw-reproductor-musica.rmw-playing .rmw-icon-pause {
+            display: block;
+        }
+        
+        .rmw-reproductor-musica .rmw-vol {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding-right: 6px;
+        }
+        
+        .rmw-reproductor-musica .rmw-vol .rmw-vol-icon {
+            width: 18px;
+            height: 18px;
+            opacity: 0.8;
+            flex-shrink: 0;
+            fill: #d81b60;
+        }
+        
+        .rmw-reproductor-musica .rmw-range {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 70px;
+            height: 4px;
+            background: #ffc2d1;
+            border-radius: 999px;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        .rmw-reproductor-musica .rmw-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            background: #d81b60;
+            border-radius: 50%;
+        }
+        
+        .rmw-reproductor-musica .rmw-range::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+            background: #d81b60;
+            border: none;
+            border-radius: 50%;
+        }
+        
+        /* Responsive */
+        @media (max-width: 550px) {
+            .sobreboda-componente-autocontenido .SI-Sobre-container {
+                --W: 75vw;
+            }
+            .sobreboda-componente-autocontenido .SI-nombres-pareja {
+                font-size: 10vw;
+            }
+            .sobreboda-componente-autocontenido .SI-texto-invitacion {
+                font-size: 3vw;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .rmw-reproductor-musica {
+                top: 10px;
+                right: 10px;
+                gap: 8px;
+                padding: 4px 6px;
+            }
+            .rmw-reproductor-musica .rmw-btn {
+                width: 32px;
+                height: 32px;
+            }
+            .rmw-reproductor-musica .rmw-range {
+                width: 60px;
+            }
+        }
+        
+        /* Elemento demo */
+        #inicio {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+            font-family: 'Lato', sans-serif;
+            color: #804d69;
+        }
+        
+        #inicio h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        #inicio p {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sobreboda-componente-autocontenido" data-texts='{
+    "button": "Toca para abrir",
+    "card_front_intro": "Te invitamos a celebrar",
+    "card_front_names": "Eduardo & Zuley",
+    "card_back": "¡Nos casamos!"
+}' data-music-url="https://nuestrodia.posdata.me/wp-content/uploads/2025/09/Fly-Me-to-the-Moon-but-it-actually-fits-Evangelion-vibe-Evangelion-Frank-Sinatra.mp3" data-colors='{
+    "sobre_principal": "#ffc0db",
+    "sobre_lado": "#f7b6d1",
+    "sobre_fondo": "#f0adca",
+    "solapa": "#e098b9",
+    "tarjeta_fondo": "#fffdfd",
+    "texto_principal": "#804d69",
+    "texto_secundario": "#a88194",
+    "corazon": "#ff8cb4"
+}' data-fonts='{
+    "base": "Lato, sans-serif",
+    "nombres": "Great Vibes, cursive"
+}'>
+    <div class="sobreboda">
+        <div class="SI-petalos-container"></div>
+        <div id="invitacion-sobre-widget">
+            <div class="SI-Sobre-container">
+                <div class="SI-scene">
+                    <div class="SI-invitation" id="invitation">
+                        <div class="SI-envelope-piece SI-envelope-back"></div>
+                        <div class="SI-envelope-piece SI-envelope-front-pocket" id="front-pocket"></div>
+                        <div class="SI-envelope-piece SI-flap" id="flap"></div>
+                    </div>
+                    <div class="SI-hearts-container-continuous" id="hearts-continuous"></div>
+                    <div class="SI-card" id="card">
+                        <div class="SI-face SI-front">
+                            <p class="SI-texto-invitacion"></p>
+                            <h1 class="SI-nombres-pareja"></h1>
+                        </div>
+                        <div class="SI-face SI-back">
+                            <p class="SI-texto-invitacion"></p>
+                        </div>
+                    </div>
+                    <div class="SI-hearts-container-initial" id="hearts-initial"></div>
+                    <button class="SI-invitation-button" id="toggle"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="rmw-reproductor-musica">
+        <button class="rmw-btn" aria-label="Reproducir o pausar música" title="Play/Pausa" aria-pressed="false">
+            <svg class="rmw-icon-play" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8 5v14l11-7z" />
+            </svg>
+            <svg class="rmw-icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+        </button>
+        <div class="rmw-vol" aria-label="Control de volumen">
+            <svg class="rmw-vol-icon" viewBox="0 0 24 24" role="img" aria-hidden="true">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+            </svg>
+            <input class="rmw-range" type="range" min="0" max="100" value="70" aria-label="Volumen">
+        </div>
+        <audio class="rmw-audio" preload="auto" loop></audio>
+    </div>
+</div>
+
+<div id="inicio">
+    <div>
+        <h2>🎉 Gracias por compartir este momento con nosotros 🎉</h2>
+        <p>¡Les esperamos para celebrar juntos este día tan especial!</p>
+        <p style="margin-top: 2rem; font-size: 0.9rem;">✨ Eduardo & Zuley ✨</p>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(function() {
+    // --- MUSIC PLAYER WIDGET ---
+    class MusicPlayerWidget {
+        constructor(element) {
+            if (!element) return;
+            this.root = element;
+            this.elements = {
+                btn: this.root.querySelector('.rmw-btn'),
+                range: this.root.querySelector('.rmw-range'),
+                audio: this.root.querySelector('.rmw-audio'),
+            };
+            this.audioUnlocked = false;
+            this.init();
+        }
+        
+        init() {
+            this.bindEvents();
+        }
+        
+        bindEvents() {
+            this.elements.btn.addEventListener('click', () => this.togglePlay());
+            this.elements.range.addEventListener('input', () => this.updateVolume());
+            this.elements.audio.addEventListener('play', () => this.updateUI(true));
+            this.elements.audio.addEventListener('pause', () => this.updateUI(false));
+        }
+        
+        play() {
+            if (!this.audioUnlocked && this.elements.audio.paused) {
+                this.unlockAndPlay();
+                return;
+            }
+            const playPromise = this.elements.audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {});
+            }
+        }
+        
+        pause() {
+            this.elements.audio.pause();
+        }
+        
+        togglePlay() {
+            if (!this.audioUnlocked) {
+                this.unlockAndPlay();
+                return;
+            }
+            if (this.elements.audio.paused) {
+                this.play();
+            } else {
+                this.pause();
+            }
+        }
+        
+        updateUI(isPlaying) {
+            this.root.classList.toggle('rmw-playing', isPlaying);
+            this.elements.btn.setAttribute('aria-pressed', isPlaying);
+        }
+        
+        updateVolume() {
+            const volumeValue = (parseInt(this.elements.range.value, 10) || 0) / 100;
+            try {
+                this.elements.audio.volume = volumeValue;
+            } catch (e) {}
+        }
+        
+        unlockAndPlay() {
+            if (this.audioUnlocked) return;
+            this.audioUnlocked = true;
+            const playPromise = this.elements.audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    this.audioUnlocked = false;
+                });
+            }
+        }
+    }
+    
+    // --- INVITATION ANIMATION ---
+    function initializeInvitationComponent(mainContainer) {
+        if (!mainContainer) {
+            console.error("Componente non trovato");
+            return;
+        }
+        
+        // Inizializza music player
+        const musicPlayerEl = mainContainer.querySelector('.rmw-reproductor-musica');
+        if (musicPlayerEl) {
+            new MusicPlayerWidget(musicPlayerEl);
+        }
+        
+        // Leggi configurazioni
+        const config = {
+            texts: JSON.parse(mainContainer.dataset.texts || '{}'),
+            musicUrl: mainContainer.dataset.musicUrl || '',
+            colors: JSON.parse(mainContainer.dataset.colors || '{}'),
+            fonts: JSON.parse(mainContainer.dataset.fonts || '{}')
+        };
+        
+        // Applica colori e font
+        const containerStyles = mainContainer.querySelector('.SI-Sobre-container').style;
+        if (containerStyles) {
+            Object.keys(config.colors).forEach(key => {
+                containerStyles.setProperty(`--color-${key.replace(/_/g, '-')}`, config.colors[key]);
+            });
+            Object.keys(config.fonts).forEach(key => {
+                containerStyles.setProperty(`--font-${key.replace(/_/g, '-')}`, config.fonts[key]);
+            });
+        }
+        
+        // Popola i testi
+        const button = mainContainer.querySelector('#toggle');
+        const cardFrontIntro = mainContainer.querySelector('.SI-face.SI-front .SI-texto-invitacion');
+        const cardFrontNames = mainContainer.querySelector('.SI-nombres-pareja');
+        const cardBack = mainContainer.querySelector('.SI-face.SI-back .SI-texto-invitacion');
+        const audioEl = mainContainer.querySelector('.rmw-audio');
+        
+        if (button) button.textContent = config.texts.button || 'Toca para abrir';
+        if (cardFrontIntro) cardFrontIntro.innerHTML = config.texts.card_front_intro || 'Te invitamos a celebrar';
+        if (cardFrontNames) cardFrontNames.innerHTML = config.texts.card_front_names || '';
+        if (cardBack) cardBack.innerHTML = config.texts.card_back || '¡Nos casamos!';
+        if (audioEl && config.musicUrl) audioEl.src = config.musicUrl;
+        
+        // Blocca scroll iniziale
+        document.body.style.overflow = 'hidden';
+        
+        // Effetto petali
+        const petalosContainer = mainContainer.querySelector('.SI-petalos-container');
+        const maxPetals = 30;
+        const petalInterval = setInterval(() => {
+            if (!mainContainer.isConnected) {
+                clearInterval(petalInterval);
+                return;
+            }
+            if (petalosContainer.querySelectorAll('.SI-petalo').length > maxPetals) return;
+            
+            const petalo = document.createElement('div');
+            petalo.classList.add('SI-petalo');
+            const tipo = Math.floor(Math.random() * 5);
+            if (tipo > 0) {
+                petalo.classList.add(`tipo-${tipo}`);
+            }
+            petalo.style.opacity = (Math.random() * 0.4 + 0.3).toFixed(2);
+            const startPosition = Math.random() * window.innerWidth;
+            const duration = Math.random() * 15 + 12;
+            const scale = Math.random() * 0.6 + 0.7;
+            petalo.style.transform = `scale(${scale})`;
+            petalo.style.left = startPosition + 'px';
+            petalo.style.top = '-30px';
+            petalosContainer.appendChild(petalo);
+            
+            const tl = gsap.timeline({ onComplete: () => { petalo.remove(); } });
+            tl.to(petalo, { y: window.innerHeight + 100, duration: duration, ease: "power1.in" }, 0);
+            const waveAmplitude = Math.random() * 80 + 40;
+            const waveCycles = Math.floor(Math.random() * 4) + 3;
+            tl.to(petalo, { x: `+=${waveAmplitude}`, duration: duration / waveCycles, ease: "sine.inOut", repeat: waveCycles - 1, yoyo: true }, 0);
+            tl.to(petalo, { rotationX: Math.random() * 720 - 360, rotationY: Math.random() * 360 - 180, rotationZ: Math.random() * 360 - 180, duration: duration, ease: "none" }, 0);
+        }, 350);
+        
+        // Elementi animazione
+        const invitation = mainContainer.querySelector('#invitation');
+        const card = mainContainer.querySelector('#card');
+        const flap = mainContainer.querySelector('#flap');
+        const frontPocket = mainContainer.querySelector('#front-pocket');
+        let isOpen = false;
+        let isFlipped = false;
+        const musicPlayer = mainContainer.querySelector('.rmw-reproductor-musica');
+        const musicPlayButton = musicPlayer ? musicPlayer.querySelector('.rmw-btn') : null;
+        
+        function openEnvelope() {
+            if (isOpen) return;
+            isOpen = true;
+            const tl = gsap.timeline();
+            tl.to(button, { duration: 0.3, autoAlpha: 0, y: 20, ease: 'power1.in' });
+            tl.to(flap, { duration: 1.0, rotationX: 180, ease: 'power2.inOut' }, "+=0.2");
+            tl.set(card, { autoAlpha: 1, visibility: 'visible' });
+            tl.to(card, { duration: 1.2, y: '-110%', zIndex: 10, ease: 'power2.out' });
+            tl.to(invitation, { duration: 1.2, scale: 0.8, ease: 'power3.inOut' }, 'settle');
+            tl.to(card, { duration: 1.2, y: '-40%', ease: 'power3.inOut', onUpdate: function() {
+                if (this.progress() > 0.5) {
+                    gsap.set(frontPocket, { zIndex: 1 });
+                }
+            } }, 'settle');
+            tl.eventCallback("onComplete", () => {
+                card.classList.add('is-interactive');
+                setTimeout(() => {
+                    document.body.style.overflow = '';
+                    const inicioElement = document.querySelector('#inicio');
+                    if (inicioElement) {
+                        inicioElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 1000);
+            });
+        }
+        
+        function toggleFlip() {
+            if (!isOpen || gsap.isTweening(card)) return;
+            isFlipped = !isFlipped;
+            gsap.to(card, { duration: 1, rotationY: isFlipped ? 180 : 0, ease: 'power4.inOut' });
+        }
+        
+        const triggerAnimation = (e) => {
+            if (e) e.preventDefault();
+            if (isOpen) return;
+            openEnvelope();
+            if (musicPlayer && musicPlayButton) {
+                musicPlayer.classList.add('rmw-visible');
+                setTimeout(() => {
+                    musicPlayButton.click();
+                }, 100);
+            }
+            window.removeEventListener('wheel', triggerAnimation);
+            if (button) button.removeEventListener('click', triggerAnimation);
+            if (invitation) invitation.removeEventListener('click', triggerAnimation);
+        };
+        
+        if (button) button.addEventListener('click', triggerAnimation);
+        if (invitation) invitation.addEventListener('click', triggerAnimation);
+        window.addEventListener('wheel', triggerAnimation, { passive: false });
+        if (card) card.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleFlip();
+        });
+    }
+    
+    // Avvia tutto quando il DOM è pronto
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.sobreboda-componente-autocontenido').forEach(initializeInvitationComponent);
+        });
+    } else {
+        document.querySelectorAll('.sobreboda-componente-autocontenido').forEach(initializeInvitationComponent);
+    }
+})();
+</script>
+
+</body>
+</html>
