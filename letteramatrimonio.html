@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Invitazione Matrimonio - Eduardo & Zuley</title>
+    <title>Michael & Roxana · Invito Matrimonio</title>
+    
+    <!-- Fonts e stili base prima parte (invito a busta) -->
     <style>
         /* Importazione font Google */
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@400;700&display=swap');
@@ -20,7 +22,7 @@
             background: #fceef5;
         }
         
-        /* --- CSS COMPLETO DEL COMPONENTE --- */
+        /* --- CSS COMPLETO DEL COMPONENTE (busta interattiva) --- */
         .sobreboda-componente-autocontenido {
             position: relative;
             width: 100%;
@@ -375,7 +377,6 @@
             border-radius: 50%;
         }
         
-        /* Responsive */
         @media (max-width: 550px) {
             .sobreboda-componente-autocontenido .SI-Sobre-container {
                 --W: 75vw;
@@ -403,38 +404,42 @@
                 width: 60px;
             }
         }
-        
-        /* Elemento demo */
-        #inicio {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
-            font-family: 'Lato', sans-serif;
-            color: #804d69;
-        }
-        
-        #inicio h2 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        #inicio p {
-            font-size: 1.2rem;
-        }
     </style>
+    
+    <!-- RESORSE SECONDO SITO (Bulma, fontawesome, countdown, AOS, menikah.css) -->
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.0/css/bulma.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/bulma-tooltip@0.1.5/dist/bulma-tooltip.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/menikah.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.countdown.css" />
+    <script src="https://kit.fontawesome.com/2828f7885a.js" crossorigin="anonymous"></script>
+    <!-- jQuery 1.9.1 (usato dal countdown plugin) -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.coundown.js"></script>
+    <link rel="icon" type="image/png" href="image/favicon.png" />
+    
+    <!-- Google Analytics (secondo sito) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23064379-20"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-23064379-20');
+    </script>
+    
+    <!-- Meta OG (secondo sito) -->
+    <meta property="og:title" content="Michael & Roxana · Matrimonio">
+    <meta property="og:description" content="Martedì 15 Giugno - Santuario Beata Vergine della Castagna, Bergamo">
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:image" content="image/favicon.png">
 </head>
 <body>
 
+<!-- ========== PRIMA PARTE: BUSTA INTERATTIVA + MUSICA ========== -->
 <div class="sobreboda-componente-autocontenido" data-texts='{
-    "button": "Toca para abrir",
-    "card_front_intro": "Te invitamos a celebrar",
-    "card_front_names": "Eduardo & Zuley",
-    "card_back": "¡Nos casamos!"
+    "button": "Tocca per aprire",
+    "card_front_intro": "Ti invitiamo a celebrare",
+    "card_front_names": "Michael & Roxana",
+    "card_back": "Ci sposiamo!"
 }' data-music-url="https://nuestrodia.posdata.me/wp-content/uploads/2025/09/Fly-Me-to-the-Moon-but-it-actually-fits-Evangelion-vibe-Evangelion-Frank-Sinatra.mp3" data-colors='{
     "sobre_principal": "#ffc0db",
     "sobre_lado": "#f7b6d1",
@@ -476,7 +481,7 @@
     </div>
     
     <div class="rmw-reproductor-musica">
-        <button class="rmw-btn" aria-label="Reproducir o pausar música" title="Play/Pausa" aria-pressed="false">
+        <button class="rmw-btn" aria-label="Riproduci o metti in pausa" title="Play/Pausa" aria-pressed="false">
             <svg class="rmw-icon-play" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M8 5v14l11-7z" />
             </svg>
@@ -484,28 +489,341 @@
                 <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
             </svg>
         </button>
-        <div class="rmw-vol" aria-label="Control de volumen">
+        <div class="rmw-vol" aria-label="Controllo volume">
             <svg class="rmw-vol-icon" viewBox="0 0 24 24" role="img" aria-hidden="true">
                 <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
             </svg>
-            <input class="rmw-range" type="range" min="0" max="100" value="70" aria-label="Volumen">
+            <input class="rmw-range" type="range" min="0" max="100" value="70" aria-label="Volume">
         </div>
         <audio class="rmw-audio" preload="auto" loop></audio>
     </div>
 </div>
 
-<div id="inicio">
-    <div>
-        <h2>🎉 Gracias por compartir este momento con nosotros 🎉</h2>
-        <p>¡Les esperamos para celebrar juntos este día tan especial!</p>
-        <p style="margin-top: 2rem; font-size: 0.9rem;">✨ Eduardo & Zuley ✨</p>
+<!-- ========== SECONDO SITO: intero contenuto (invito classico con dettagli, countdown, mappa, rsvp) ========== -->
+<div id="second-wedding-site" class="wedding-site-wrapper">
+    <!-- Begin Preloader -->
+    <div class="preloader-wrapper">
+      <div class="preloader">
+        <img src="image/favicon.png" alt="Fiore" />
+      </div>
+    </div>
+    <!-- End Preloader-->
+    <!-- Begin Header -->
+    <div class="header-wrapper" id="home">
+      <!-- Begin Hero -->
+      <section class="hero is-large">
+        <!-- Begin Mobile Nav -->
+        <nav class="navbar is-transparent is-hidden-desktop">
+          <!-- Begin Burger Menu -->
+          <div class="navbar-brand is-fixed-top">
+            <div class="navbar-burger burger" data-target="mobile-nav">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <!-- End Burger Menu -->
+          <div id="mobile-nav" class="navbar-menu">
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <a class="navbar-item" href="#Waktu">
+                  Orario
+                </a>
+              </div>
+              <div class="navbar-item">
+                <a class="navbar-item" href="#lokasi">
+                  Luogo
+                </a>
+              </div>
+              <div class="navbar-item">
+                <a class="navbar-item" href="#tentang-pasangan">
+                  Chi sono Michael & Roxana
+                </a>
+              </div>
+              <div class="navbar-item">
+                <a class="navbar-item" href="#rsvp">
+                  Conferma presenza
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <!-- End Mobile Nav -->
+        <!-- Begin Hero Content-->
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <h1 class="subtitle">Invito al Matrimonio</h1>
+            <h2 class="title">Roxana & Michael</h2>
+            <h4 class="subtitle tempatwaktu">
+                Martedì, 15 Giugno 2026
+                </br>
+                Santuario Beata Vergine della Castagna, Bergamo
+                </br>
+                Ricevimento: Agriturismo Sant'Alessandro
+            </h4>
+          </div>
+          <!-- Start Countdown -->       
+          <div>
+            <ul id="hitungmundur" >
+              <li><span class="days">00</span><p class="days_text">Giorni</p></li>
+              <li class="separator">:</li>
+              <li><span class="hours">00</span><p class="hours_text">Ore</p></li>
+              <li class="separator">:</li>
+              <li><span class="minutes">00</span><p class="minutes_text">Minuti</p></li>
+              <li class="separator">:</li>
+              <li><span class="seconds">00</span><p class="seconds_text">Secondi</p></li>
+            </ul>
+            <div class="spasi">
+            </div>
+            <script type="text/javascript">
+              // Data del matrimonio: Martedì 15 Giugno 2026 ore 17:00
+              var dataMatrimonio = '06/15/2026 17:00:00';
+
+              $('#hitungmundur').countdown({
+                date: dataMatrimonio,
+                offset: +7,
+                day: 'Giorno',
+                days: 'Giorni'
+              }, function () {
+                // Alert di completamento rimosso (callback vuota)
+              });
+            </script>  
+          </div>
+          <!-- End Countdown -->
+        </div>
+        <!-- End Hero Content-->
+        <!-- Begin Hero Menu -->
+        <div class="hero-foot ">
+          <div class="hero-foot--wrapper">
+            <div class="columns">
+              <div class="column is-12 hero-menu-desktop has-text-centered">
+                <ul>
+                  <li class="is-active"><a href="#home">Home</a></li>
+                  <li><a href="#Waktu">Orario</a></li>
+                  <li><a href="#lokasi">Luogo</a></li>
+                  <li><a href="#tentang-pasangan">Chi sono Michael & Roxana</a></li>
+                  <li><a href="#rsvp">Conferma presenza</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Hero Menu -->
+      </section>
+      <!-- End Hero -->
+    </div>
+    <!-- End Header -->
+
+    <!-- Begin Main Content -->
+    <div class="main-content">
+      <!-- regular-section-->
+      <section class="section-light no-padding-top regular-section has-text-centered has-vertically-aligned-content" id="regular-section">
+        <div data-aos="fade-up" data-aos-easing="linear">
+          <!-- Immagine bismillah rimossa per rispetto della fede cristiana -->
+        </div>
+        <p class="bodytext" data-aos="fade-up" data-aos-easing="linear">
+          Carissimi amici e parenti,
+          <br />
+          Con la grazia di Dio,
+          <br />
+          vi invitiamo cordialmente alla celebrazione del nostro matrimonio
+        </p>
+        <span class="space40px"></span>
+        <span class="space40px"></span>
+        <div data-aos="fade-up" data-aos-easing="linear">
+          <div class="nama-lengkap">Roxana</div>
+          <div class="ampersand">&</div>
+          <div class="nama-lengkap">Michael</div>
+        </div>
+        <span class="space40px"></span>
+        <div data-aos="fade-up" data-aos-easing="linear">
+          <img src="image/divider-leaves.png" class="divider has-text-centered" alt="~~~">
+        </div>
+        <span class="space40px"></span>
+        <span class="space40px"></span>
+      </section>
+      
+      <!-- Waktu Section -->
+      <section class="section-dark" id="Waktu">
+        <div class="container">
+          <div class="column is-12 regular-section" data-aos="fade-up" data-aos-easing="linear">
+            <h1 class="title has-text-centered section-title">Orario</h1>
+          </div>
+          <div class="columns is-multiline" data-aos="fade-up" data-aos-easing="linear">
+            <div class="column is-4 has-vertically-aligned-content">
+              <p class="is-larger has-text-centered">
+                  <div class="waktu tanggal-hari has-text-centered">Martedì</div> 
+                  <div class="waktu tanggal-angka has-text-centered">15</div>
+                  <div class="waktu tanggal-bulan has-text-centered">Giugno 2026</div>
+              </p>
+            </div>
+            <div class="column is-4 has-vertically-aligned-content">
+              <p class="waktu is-larger has-text-centered">
+                Cerimonia: <br><strong>17:00</strong>
+              </p>
+            </div>
+            <div class="column is-4 has-vertically-aligned-content">
+              <h1 class="waktu is-larger has-text-centered">
+                Ricevimento: <br><strong>19:00 - 22:00</strong>
+              </h1>
+            </div>
+          </div>
+        </div>
+        <div class="space40px"></div>
+        <div class="main-content has-text-centered" data-aos="fade-up" data-aos-easing="linear">
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Matrimonio+Michael+e+Roxana&dates=20260615T150000Z/20260615T200000Z&details=Cerimonia+al+Santuario+Beata+Vergine+della+Castagna%2C+ricevimento+all%27Agriturismo+Sant%27Alessandro&location=Bergamo" target="_blank" class="button has-tooltip btn-cta" data-tooltip="Aggiungi al Calendario">
+            <i class="far fa-calendar-plus"></i>&nbsp;&nbsp;Google Calendar
+          </a>
+        </div>
+      </section>
+
+      <!-- Lokasi Section -->
+      <section class="section-darker" id="lokasi">
+        <div class="container">
+          <div class="column is-12 regular-section" data-aos="fade-up" data-aos-easing="linear">
+            <h1 class="title has-text-centered section-title">Luogo</h1>
+            <p class="tempat is-larger has-text-centered">
+              <strong>Cerimonia: Santuario Beata Vergine della Castagna</strong><br>
+              Via Santuario della Castagna, 24129 Bergamo BG<br><br>
+              <strong>Ricevimento: Agriturismo Sant'Alessandro</strong><br>
+              Via Sant'Alessandro, 24122 Bergamo BG
+            </p>
+          </div>
+          <div class="section-map" data-aos="fade-up" data-aos-easing="linear">
+            <!-- Mappa che mostra la zona di Bergamo (coordinate approssimative del santuario) -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d44704.71744624424!2d9.6547948!3d45.7083148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x478151ed00442b2b%3A0x9a1aa68414085c5!2sSantuario%20Beata%20Vergine%20della%20Castagna%2C%20Via%20Santuario%20della%20Castagna%2C%20Bergamo!3m2!1d45.723661!2d9.6713009!4m5!1s0x478151c0aa0501f9%3A0xfcbc31114d1aecbc!2sAgriturismo%20Sant&#39;Alessandro%2C%20Via%20Sant&#39;Alessandro%2C%20Bergamo!3m2!1d45.6997311!2d9.668845499999999!5e0!3m2!1sit!2sit!4v1748970000000!5m2!1sit!2sit" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+          <div class="space40px"></div>
+          <div class="has-text-centered" data-aos="fade-up" data-aos-easing="linear">
+            <a href="https://maps.google.com/maps?q=Santuario+Beata+Vergine+della+Castagna+Bergamo&ll=45.723661,9.671301" class="button btn-cta" target="_blank">
+              <i class="far fa-directions"></i>&nbsp;&nbsp;Google Maps - Santuario
+            </a>
+            <a href="https://maps.google.com/maps?q=Agriturismo+Sant%27Alessandro+Bergamo&ll=45.699731,9.668845" class="button btn-cta" target="_blank">
+              <i class="far fa-directions"></i>&nbsp;&nbsp;Google Maps - Ricevimento
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tentang Pasangan Section -->
+      <section class="section-light regular-section is-fullheight" id="tentang-pasangan">
+        <div class="container">
+          <div class="columns is-multiline">  
+            <div class="column has-text-centered is-12 prolog">
+              <h1 class="title has-text-centered section-title" data-aos="fade-up" data-aos-easing="linear">Chi sono Roxana e Michael</h1>
+              <div class="tile">
+                <div class="tile is-ancestor">
+                  <div class="tile is-parent">
+                    <article class="tile is-child notification foto1" data-aos="fade-up">
+                      <div class="content">
+                        <p class="title-foto">Foto 1</p>
+                        <p class="subtitle-foto">Primo incontro</p>
+                      </div>
+                    </article>
+                  </div>
+                  <div class="tile is-parent">
+                    <article class="tile is-child notification foto2" data-aos="fade-up">
+                      <div class="content">
+                        <p class="title-foto">Foto 2</p>
+                        <p class="subtitle-foto">Stessa squadra, inizia la storia</p>
+                      </div>
+                    </article>
+                  </div>
+                  <div class="tile is-parent">
+                    <article class="tile is-child notification foto3" data-aos="fade-up">
+                      <div class="content">
+                        <p class="title-foto">Foto 3</p>
+                        <p class="subtitle-foto">Una bella storia d'amore</p>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+              </div>
+              <div class="space24px"></div>
+              <div class="tile is-ancestor">
+                <div class="tile is-parent">
+                  <article class="tile is-child notification foto6" data-aos="fade-up">
+                    <div class="content"><p class="title-foto">Foto 4</p><p class="subtitle-foto">Incontro delle due famiglie</p></div>
+                  </article>
+                </div>
+                <div class="tile is-parent">
+                  <article class="tile is-child notification foto4" data-aos="fade-up">
+                    <div class="content"><p class="title-foto">Foto 5</p><p class="subtitle-foto">Fidanzamento</p></div>
+                  </article>
+                </div>
+                <div class="tile is-parent">              
+                  <article class="tile is-child notification foto5" data-aos="fade-up">
+                    <div class="content"><p class="title-foto">Foto 6</p><p class="subtitle-foto">Matrimonio</p></div>
+                  </article>
+                </div>
+              </div>   
+              <div class="space40px"></div>
+              <div data-aos="fade-up"><img src="image/divider-leaves.png" class="divider" alt="~~~"></div>
+              <div class="space40px"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RSVP Section -->
+      <section class="section-dark contact" id="rsvp">
+        <div class="container">
+          <div class="columns is-multiline">          
+            <div class="column is-12 prolog">
+              <h1 class="title has-text-centered section-title" data-aos="fade-up">Conferma presenza</h1>
+            </div>
+            <div class="column is-12 prolog has-text-centered" data-aos="fade-up">
+              <p class="h2 subtitle">
+                È un onore e una gioia per noi se vorrete partecipare per donarci la vostra benedizione.
+                <br><br>Vi aspettiamo gentilmente per la conferma. <br>Informazioni: All'ingresso saranno disponibili igienizzante per le mani e controllo della temperatura.
+                <br><br>Se non potete venire, speriamo di incontrarvi in un'altra occasione. <br>State attenti e preservate la salute :)
+              </p>
+              <a href="https://api.whatsapp.com/send?phone=628xxxxxxxxxx&text=Halo%20Roxana,%20saya%20akan%20datang%20di%20acara%20pernikahan" class="button btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i>&nbsp;&nbsp;Scrivi a Roxana
+              </a>
+              <a href="https://api.whatsapp.com/send?phone=628xxxxxxxxxx&text=Halo%20Michael,%20saya%20akan%20datang%20di%20acara%20pernikahan" class="button btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i>&nbsp;&nbsp;Scrivi a Michael
+              </a>
+              <div class="space40px"></div>
+              <div data-aos="fade-up"><img src="image/divider-leaves.png" class="divider" alt="~~~"></div>
+              <div class="space40px"></div>
+              <p class="h2 subtitle" data-aos="fade-up">
+                Con gioia,<br>
+                <a class="instagram" href="https://instagram.com/instagramaccount" target="_blank"><i class="fab fa-instagram"></i> @michael_roxana</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Begin Footer -->
+    <div class="footer">
+      <div class="container">
+        <a href="https://github.com/daengdoang/simple-wedding-invitation" class="has-vertically-align">
+          <p>2026 &copy; Michael & Roxana</p>
+        </a>
+        <a href="https://bulma.io"><img src="https://bulma.io/assets/images/made-with-bulma.png" alt="Realizzato con Bulma"></a>
+        <a href="https://www.netlify.com"><img src="https://www.netlify.com/img/global/badges/netlify-color-bg.svg" alt="Deploy con Netlify"/></a>
+      </div>
     </div>
 </div>
 
+<!-- Scripts della seconda parte (JS dipendenze, AOS, menikah.js) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/menikah.js"></script>
+<link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+<script>
+  AOS.init({ easing: "ease-out", duration: 800 });
+</script>
+
+<!-- Script principale della busta (GSAP + logica apertura, petali, fusione scroll) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script>
 (function() {
-    // --- MUSIC PLAYER WIDGET ---
+    // Music Player Widget (stesso widget della prima parte)
     class MusicPlayerWidget {
         constructor(element) {
             if (!element) return;
@@ -518,159 +836,84 @@
             this.audioUnlocked = false;
             this.init();
         }
-        
-        init() {
-            this.bindEvents();
-        }
-        
+        init() { this.bindEvents(); }
         bindEvents() {
             this.elements.btn.addEventListener('click', () => this.togglePlay());
             this.elements.range.addEventListener('input', () => this.updateVolume());
             this.elements.audio.addEventListener('play', () => this.updateUI(true));
             this.elements.audio.addEventListener('pause', () => this.updateUI(false));
         }
-        
         play() {
-            if (!this.audioUnlocked && this.elements.audio.paused) {
-                this.unlockAndPlay();
-                return;
-            }
-            const playPromise = this.elements.audio.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(error => {});
-            }
+            if (!this.audioUnlocked && this.elements.audio.paused) { this.unlockAndPlay(); return; }
+            this.elements.audio.play().catch(e=>{});
         }
-        
-        pause() {
-            this.elements.audio.pause();
-        }
-        
+        pause() { this.elements.audio.pause(); }
         togglePlay() {
-            if (!this.audioUnlocked) {
-                this.unlockAndPlay();
-                return;
-            }
-            if (this.elements.audio.paused) {
-                this.play();
-            } else {
-                this.pause();
-            }
+            if (!this.audioUnlocked) { this.unlockAndPlay(); return; }
+            if (this.elements.audio.paused) this.play(); else this.pause();
         }
-        
-        updateUI(isPlaying) {
-            this.root.classList.toggle('rmw-playing', isPlaying);
-            this.elements.btn.setAttribute('aria-pressed', isPlaying);
-        }
-        
-        updateVolume() {
-            const volumeValue = (parseInt(this.elements.range.value, 10) || 0) / 100;
-            try {
-                this.elements.audio.volume = volumeValue;
-            } catch (e) {}
-        }
-        
+        updateUI(isPlaying) { this.root.classList.toggle('rmw-playing', isPlaying); this.elements.btn.setAttribute('aria-pressed', isPlaying); }
+        updateVolume() { try { this.elements.audio.volume = (parseInt(this.elements.range.value,10)||0)/100; } catch(e){} }
         unlockAndPlay() {
-            if (this.audioUnlocked) return;
+            if(this.audioUnlocked) return;
             this.audioUnlocked = true;
-            const playPromise = this.elements.audio.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    this.audioUnlocked = false;
-                });
-            }
+            this.elements.audio.play().catch(()=>{ this.audioUnlocked = false; });
         }
     }
     
-    // --- INVITATION ANIMATION ---
     function initializeInvitationComponent(mainContainer) {
-        if (!mainContainer) {
-            console.error("Componente non trovato");
-            return;
-        }
-        
-        // Inizializza music player
+        if (!mainContainer) return;
         const musicPlayerEl = mainContainer.querySelector('.rmw-reproductor-musica');
-        if (musicPlayerEl) {
-            new MusicPlayerWidget(musicPlayerEl);
-        }
+        if (musicPlayerEl) new MusicPlayerWidget(musicPlayerEl);
         
-        // Leggi configurazioni
         const config = {
             texts: JSON.parse(mainContainer.dataset.texts || '{}'),
             musicUrl: mainContainer.dataset.musicUrl || '',
             colors: JSON.parse(mainContainer.dataset.colors || '{}'),
             fonts: JSON.parse(mainContainer.dataset.fonts || '{}')
         };
-        
-        // Applica colori e font
         const containerStyles = mainContainer.querySelector('.SI-Sobre-container').style;
         if (containerStyles) {
-            Object.keys(config.colors).forEach(key => {
-                containerStyles.setProperty(`--color-${key.replace(/_/g, '-')}`, config.colors[key]);
-            });
-            Object.keys(config.fonts).forEach(key => {
-                containerStyles.setProperty(`--font-${key.replace(/_/g, '-')}`, config.fonts[key]);
-            });
+            Object.keys(config.colors).forEach(key => containerStyles.setProperty(`--color-${key.replace(/_/g, '-')}`, config.colors[key]));
+            Object.keys(config.fonts).forEach(key => containerStyles.setProperty(`--font-${key.replace(/_/g, '-')}`, config.fonts[key]));
         }
-        
-        // Popola i testi
         const button = mainContainer.querySelector('#toggle');
         const cardFrontIntro = mainContainer.querySelector('.SI-face.SI-front .SI-texto-invitacion');
         const cardFrontNames = mainContainer.querySelector('.SI-nombres-pareja');
         const cardBack = mainContainer.querySelector('.SI-face.SI-back .SI-texto-invitacion');
         const audioEl = mainContainer.querySelector('.rmw-audio');
-        
-        if (button) button.textContent = config.texts.button || 'Toca para abrir';
-        if (cardFrontIntro) cardFrontIntro.innerHTML = config.texts.card_front_intro || 'Te invitamos a celebrar';
+        if (button) button.textContent = config.texts.button || 'Tocca per aprire';
+        if (cardFrontIntro) cardFrontIntro.innerHTML = config.texts.card_front_intro || 'Ti invitiamo a celebrare';
         if (cardFrontNames) cardFrontNames.innerHTML = config.texts.card_front_names || '';
-        if (cardBack) cardBack.innerHTML = config.texts.card_back || '¡Nos casamos!';
+        if (cardBack) cardBack.innerHTML = config.texts.card_back || 'Ci sposiamo!';
         if (audioEl && config.musicUrl) audioEl.src = config.musicUrl;
         
-        // Blocca scroll iniziale
         document.body.style.overflow = 'hidden';
-        
-        // Effetto petali
         const petalosContainer = mainContainer.querySelector('.SI-petalos-container');
-        const maxPetals = 30;
         const petalInterval = setInterval(() => {
-            if (!mainContainer.isConnected) {
-                clearInterval(petalInterval);
-                return;
-            }
-            if (petalosContainer.querySelectorAll('.SI-petalo').length > maxPetals) return;
-            
+            if (!mainContainer.isConnected) { clearInterval(petalInterval); return; }
+            if (petalosContainer.querySelectorAll('.SI-petalo').length > 30) return;
             const petalo = document.createElement('div');
             petalo.classList.add('SI-petalo');
             const tipo = Math.floor(Math.random() * 5);
-            if (tipo > 0) {
-                petalo.classList.add(`tipo-${tipo}`);
-            }
+            if (tipo > 0) petalo.classList.add(`tipo-${tipo}`);
             petalo.style.opacity = (Math.random() * 0.4 + 0.3).toFixed(2);
-            const startPosition = Math.random() * window.innerWidth;
-            const duration = Math.random() * 15 + 12;
-            const scale = Math.random() * 0.6 + 0.7;
-            petalo.style.transform = `scale(${scale})`;
-            petalo.style.left = startPosition + 'px';
+            petalo.style.left = Math.random() * window.innerWidth + 'px';
             petalo.style.top = '-30px';
             petalosContainer.appendChild(petalo);
-            
-            const tl = gsap.timeline({ onComplete: () => { petalo.remove(); } });
+            const duration = Math.random() * 15 + 12;
+            const tl = gsap.timeline({ onComplete: () => petalo.remove() });
             tl.to(petalo, { y: window.innerHeight + 100, duration: duration, ease: "power1.in" }, 0);
-            const waveAmplitude = Math.random() * 80 + 40;
-            const waveCycles = Math.floor(Math.random() * 4) + 3;
-            tl.to(petalo, { x: `+=${waveAmplitude}`, duration: duration / waveCycles, ease: "sine.inOut", repeat: waveCycles - 1, yoyo: true }, 0);
+            tl.to(petalo, { x: `+=${Math.random() * 80 + 40}`, duration: duration / (Math.floor(Math.random() * 4) + 3), ease: "sine.inOut", repeat: 3, yoyo: true }, 0);
             tl.to(petalo, { rotationX: Math.random() * 720 - 360, rotationY: Math.random() * 360 - 180, rotationZ: Math.random() * 360 - 180, duration: duration, ease: "none" }, 0);
         }, 350);
         
-        // Elementi animazione
         const invitation = mainContainer.querySelector('#invitation');
         const card = mainContainer.querySelector('#card');
         const flap = mainContainer.querySelector('#flap');
         const frontPocket = mainContainer.querySelector('#front-pocket');
         let isOpen = false;
         let isFlipped = false;
-        const musicPlayer = mainContainer.querySelector('.rmw-reproductor-musica');
-        const musicPlayButton = musicPlayer ? musicPlayer.querySelector('.rmw-btn') : null;
         
         function openEnvelope() {
             if (isOpen) return;
@@ -681,38 +924,26 @@
             tl.set(card, { autoAlpha: 1, visibility: 'visible' });
             tl.to(card, { duration: 1.2, y: '-110%', zIndex: 10, ease: 'power2.out' });
             tl.to(invitation, { duration: 1.2, scale: 0.8, ease: 'power3.inOut' }, 'settle');
-            tl.to(card, { duration: 1.2, y: '-40%', ease: 'power3.inOut', onUpdate: function() {
-                if (this.progress() > 0.5) {
-                    gsap.set(frontPocket, { zIndex: 1 });
-                }
-            } }, 'settle');
+            tl.to(card, { duration: 1.2, y: '-40%', ease: 'power3.inOut', onUpdate: function() { if (this.progress() > 0.5) gsap.set(frontPocket, { zIndex: 1 }); } }, 'settle');
             tl.eventCallback("onComplete", () => {
                 card.classList.add('is-interactive');
                 setTimeout(() => {
                     document.body.style.overflow = '';
-                    const inicioElement = document.querySelector('#inicio');
-                    if (inicioElement) {
-                        inicioElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }, 1000);
+                    const secondSite = document.getElementById('second-wedding-site');
+                    if (secondSite) secondSite.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 800);
             });
         }
         
-        function toggleFlip() {
-            if (!isOpen || gsap.isTweening(card)) return;
-            isFlipped = !isFlipped;
-            gsap.to(card, { duration: 1, rotationY: isFlipped ? 180 : 0, ease: 'power4.inOut' });
-        }
+        function toggleFlip() { if (!isOpen || gsap.isTweening(card)) return; isFlipped = !isFlipped; gsap.to(card, { duration: 1, rotationY: isFlipped ? 180 : 0, ease: 'power4.inOut' }); }
         
         const triggerAnimation = (e) => {
             if (e) e.preventDefault();
             if (isOpen) return;
             openEnvelope();
-            if (musicPlayer && musicPlayButton) {
-                musicPlayer.classList.add('rmw-visible');
-                setTimeout(() => {
-                    musicPlayButton.click();
-                }, 100);
+            if (musicPlayerEl) {
+                musicPlayerEl.classList.add('rmw-visible');
+                setTimeout(() => { const btnPlay = musicPlayerEl.querySelector('.rmw-btn'); if(btnPlay) btnPlay.click(); }, 100);
             }
             window.removeEventListener('wheel', triggerAnimation);
             if (button) button.removeEventListener('click', triggerAnimation);
@@ -722,13 +953,9 @@
         if (button) button.addEventListener('click', triggerAnimation);
         if (invitation) invitation.addEventListener('click', triggerAnimation);
         window.addEventListener('wheel', triggerAnimation, { passive: false });
-        if (card) card.addEventListener('click', (e) => {
-            e.preventDefault();
-            toggleFlip();
-        });
+        if (card) card.addEventListener('click', (e) => { e.preventDefault(); toggleFlip(); });
     }
     
-    // Avvia tutto quando il DOM è pronto
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.sobreboda-componente-autocontenido').forEach(initializeInvitationComponent);
@@ -738,6 +965,5 @@
     }
 })();
 </script>
-
 </body>
 </html>
